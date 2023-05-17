@@ -1,4 +1,3 @@
-# flutter_live_codeing_challenge
 
 ## Story
 1. As a user, I want to view a list of Choco products, including their names, descriptions, and prices.
