@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_live_codeing_challenge/bloc/products_bloc.dart';
+import 'package:flutter_live_codeing_challenge/services/product_repository.dart';
+import 'package:flutter_live_codeing_challenge/view/products_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,22 +19,9 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Choco'),
         ),
-        body: ListView.builder(
-          itemCount: 20, // Number of items in the list
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              title: Text('Item $index'), // Item title
-              subtitle: Text('Subtitle for item $index'), // Item subtitle
-              leading: const Icon(Icons.star), // Leading icon for the item
-              trailing:
-                  const Icon(Icons.arrow_forward), // Trailing icon for the item
-              onTap: () {
-                // Action to perform when the item is tapped
-                // ignore: avoid_print
-                print('Tapped item $index');
-              },
-            );
-          },
+        body: BlocProvider(
+          create: (context) => ProductsBloc(repository: ProductRepository())..add(ProductsEvent.started()),
+          child: ProductWidget(),
         ),
       ),
     );
