@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
           title: const Text('Choco'),
         ),
         body: BlocProvider(
-          create: (context) => ProductsBloc(repository: ProductRepository())..add(ProductsEvent.started()),
-          child: ProductWidget(),
+          create: (context) => ProductsBloc(repository: ProductRepository())..add(const ProductsEvent.started()),
+          child: const ProductsWidget(),
         ),
       ),
     );
